@@ -1,0 +1,21 @@
+INFORME.
+Elementos duplicados
+--nv-sys-grid-gutter-m-fixed: 16px;,
+--nv-sys-grid-columns-m-fluid: 12;
+Elementos nuevos
+--nv-sys-color-light-background-banner-white: #ffffff;,
+--nv-sys-color-light-background-banner-personal-light: #e8f8ff;,
+--nv-sys-color-light-background-banner-personal-bold: #0076c7;
+Elementos eliminados
+--nv-sys-typography-12xl-height: 128px;,
+--nv-sys-typography-11xl-height: 112px;,
+--nv-sys-typography-10xl-height: 96px;,
+--nv-sys-typography-9xl-height: 80px;,
+--nv-sys-typography-8xl-height: 64px;,
+--nv-sys-typography-7xl-height: 52px;,
+--nv-sys-typography-6xl-height: 44px;,
+--nv-sys-typography-5xl-height: 40px;,
+--nv-sys-typography-4xl-height: 36px;,
+--nv-sys-typography-3xl-height: 32px;,
+--nv-sys-typography-2xl-height: 30px;,
+--nv-sys-typography-xl-height: 28px;
