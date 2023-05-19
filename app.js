@@ -64,30 +64,29 @@ let date = new Date()
 
 
 
-    const sysTokenInitial = '--nv-sys'
-    const newFile = readAndPrepareFile('./nova.css')
-    const previousFile = readAndPrepareFile('./oldNova.css')
+const sysTokenInitial = '--nv-sys'
+const newFile = readAndPrepareFile('./nova.css')
+const previousFile = readAndPrepareFile('./oldNova.css')
+  
+const newFileSplitted = getSplittedRows(newFile)
+const previousFileSplitted = getSplittedRows(previousFile)
     
-    const newFileSplitted = getSplittedRows(newFile)
-    const previousFileSplitted = getSplittedRows(previousFile)
+const duplicates = findDuplicates(newFileSplitted)
+const newRows = compareFiles(newFileSplitted, previousFileSplitted)
+const deleteRows = compareFiles(previousFileSplitted, newFileSplitted)
     
-    const duplicates = findDuplicates(newFileSplitted)
-    const newRows = compareFiles(newFileSplitted, previousFileSplitted)
-    const deleteRows = compareFiles(previousFileSplitted, newFileSplitted)
+dataFile = "INFORME."
+dataFile += "\nElementos duplicados"
+dataFile += !duplicates ? "\nNo se encontraron elementos duplicados." : duplicates.map(d => `\n${d}`)
+
+dataFile += "\n\nElementos nuevos"
+dataFile += newRows.length === 0 ? "\nNo se encontraron nuevos elementos." : newRows.map(r => `\n${r}`)
     
-    dataFile = "INFORME."
-    dataFile += "\nElementos duplicados"
-    dataFile += !duplicates ? "\nNo se encontraron elementos duplicados." : duplicates.map(d => `\n${d}`)
-    
-    dataFile += "\nElementos nuevos"
-    dataFile += newRows.length === 0 ? "\nNo se encontraron nuevos elementos." : newRows.map(r => `\n${r}`)
-    
-    dataFile += "\nElementos eliminados"
-    dataFile += deleteRows.length === 0 ? console.log("\nNo se encontraron elementos eliminados.") : deleteRows.map(r => `\n${r}`)
-    
-    console.log(dataFile)
-    let now = `${date.getDate()}-${date.getDay()}-${date.getFullYear()}-${date.getHours()}:${date.getMinutes()}`
-    setTimeout(() => {
-        fs.appendFileSync(`Whats-News_.txt`, dataFile, { encoding: 'utf8', flag: "a" })
-    }, 2000);
+dataFile += "\n\nElementos eliminados"
+dataFile += deleteRows.length === 0 ? console.log("\nNo se encontraron elementos eliminados.") : deleteRows.map(r => `\n${r}`)
+
+let now = `${date.getDate()}-${date.getDay()}-${date.getFullYear()}-${date.getHours()}:${date.getMinutes()}`
+setTimeout(() => {
+    fs.appendFileSync(`Whats-News_.txt`, dataFile, { encoding: 'utf8', flag: "a" })
+}, 2000);
 
